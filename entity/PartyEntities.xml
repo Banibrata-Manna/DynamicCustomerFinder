@@ -1,0 +1,124 @@
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-3.xsd">
+    <entity entity-name="Party" package="partyEntities.party">
+        <field name="partyId" type="id" is-pk="true"/>
+        <field name="partyTypeEnumId" type="id"/>
+        <relationship type="one" title="PartyType" related="Enumeration">
+            <key-map field-name="partyTypeEnumId"/>
+        </relationship>
+        <relationship type="one-nofk" related="partyEntities.party.Person"/>
+        <relationship type="one-nofk" related="partyEntities.party.Organization"/>
+        <seed-data>
+            <moqui.basic.EnumerationType enumTypeId="PartyType" description="Party Type"/>
+            <moqui.basic.Enumeration enumTypeId="PartyType" enumId="PERSON" description="Person"/>
+            <moqui.basic.Enumeration enumTypeId="PartyType" enumId="ORGANIZATION" description="Person"/>
+        </seed-data>
+    </entity>
+    
+    <entity entity-name="Person" package="partyEntities.party">
+        <field name="partyId" type="id" is-pk="true"/>
+        <field name="firstName" type="text-short"/>
+        <field name="lastName" type="text-short"/>
+        <field name="gender" type="text-indicator"/>
+        <field name="birthDate" type="date"/>
+        <relationship type="one" related="partyEntities.party.Party"/>
+    </entity>
+
+    <entity entity-name="Organization" package="partyEntities.party">
+        <field name="partyId" type="id" is-pk="true"/>
+        <field name="organizationName" type="text-short"/>
+        <relationship type="one" related="partyEntities.party.Party"/>
+    </entity>
+
+    <entity entity-name="RoleType" package="partyEntities.party">
+        <field name="roleTypeId" type="id" is-pk="true"/>
+        <field name="parentTypeId" type="id"/>
+        <field name="description" type="text-short"/>
+        <relationship type="one" related="partyEntities.party.RoleType">
+            <key-map field-name="parentTypeId" related="roleTypeId"/>
+        </relationship>
+        <seed-data>
+            <partyEntities.party.RoleType roleTypeId="CUSTOMER" description="Customer"/>
+            <partyEntities.party.RoleType roleTypeId="END_USER_CUSTOMER" parentTypeId="CUSTOMER" description="End User Customer"/>
+            <partyEntities.party.RoleType roleTypeId="BULK_CUSTOMER" parentTypeId="CUSTOMER" description="Bulk Customer"/>
+            <partyEntities.party.RoleType roleTypeId="PLACING_CUSTOMER" parentTypeId="CUSTOMER" description="Placing Customer"/>
+            <partyEntities.party.RoleType roleTypeId="SHIP_TO_CUSTOMER" parentTypeId="CUSTOMER" description="Ship-To Customer"/>
+            <partyEntities.party.RoleType roleTypeId="BILL_TO_CUSTOMER" parentTypeId="CUSTOMER" description="Bill-To Customer"/>
+            <partyEntities.party.RoleType roleTypeId="EMPLOYER" description="Employer"/>
+            <partyEntities.party.RoleType roleTypeId="EMPLOYEE" description="Employee"/>
+        </seed-data>
+    </entity>
+
+    <entity entity-name="PartyRole" package="partyEntities.party">
+        <field name="partyId" type="id" is-pk="true"/>
+        <field name="roleTypeId" type="id" is-pk="true"/>
+
+        <relationship type="one" related="partyEntities.party.RoleType"/>
+        <relationship type="one" related="partyEntities.party.Party"/>
+    </entity>
+
+    <entity entity-name="ContactMech" package="partyEntities.party.contact">
+        <field name="contactMechId" type="id" is-pk="true"/>
+        <field name="contactMechTypeEnumId" type="id"/>
+        <field name="infoString" type="text-short"/>
+        <relationship type="one" title="ContactMechType" related="Enumeration">
+            <key-map field-name="contactMechTypeEnumId"/>
+        </relationship>
+        <seed-data>
+            <moqui.basic.EnumerationType enumTypeId="ContactMechType" description="Contact Mech Type"/>
+            <moqui.basic.Enumeration enumTypeId="ContactMechType" enumId="POSTAL_ADDRESS" description="Postal Address"/>
+            <moqui.basic.Enumeration enumTypeId="ContactMechType" enumId="TELECOM_NUMBER" description="Telecom Number"/>
+            <moqui.basic.Enumeration enumTypeId="ContactMechType" enumId="EMAIL_ADDRESS" description="Email Address"/>
+        </seed-data>
+    </entity>
+
+    <entity entity-name="TelecomNumber" package="partyEntities.party.contact">
+        <field name="contactMechId" type="id" is-pk="true"/>
+        <field name="countryCode" type="text-short"/>
+        <field name="areaCode" type="text-short"/>
+        <field name="contactNumber" type="text-short"/>
+        <field name="askForName" type="text-medium"/>
+        <relationship type="one" related="partyEntities.party.contact.ContactMech"/>
+    </entity>
+
+    <entity entity-name="PostalAddress" package="partyEntities.party.contact">
+        <field name="contactMechId" type="id" is-pk="true"/>
+        <field name="toName" type="text-short"/>
+        <field name="attnName" type="text-short"/>
+        <field name="address1" type="text-short"/>
+        <field name="address2" type="text-short"/>
+        <field name="city" type="text-short"/>
+        <field name="postalCode" type="text-short"/>
+        <relationship type="one" related="partyEntities.party.contact.ContactMech"/>
+    </entity>
+
+    <entity entity-name="ContactMechPurpose" package="partyEntities.party.contact">
+        <field name="contactMechPurposeId" type="id" is-pk="true"/>
+        <field name="contactMechTypeEnumId" type="id"/>
+        <field name="description" type="text-short"/>
+        <relationship type="one" related="Enumeration">
+            <key-map field-name="contactMechTypeEnumId"/>
+        </relationship>
+        <seed-data>
+            <partyEntities.party.contact.ContactMechPurpose contactMechPurposeId="PostalPrimary" contactMechTypeEnumId="EMAIL_ADDRESS" description="Postal - Primary"/>
+            <partyEntities.party.contact.ContactMechPurpose contactMechPurposeId="PostalBilling" contactMechTypeEnumId="EMAIL_ADDRESS" description="Postal - Billing"/>
+            <partyEntities.party.contact.ContactMechPurpose contactMechPurposeId="PhonePrimary" contactMechTypeEnumId="EMAIL_ADDRESS" description="Phone - Primary"/>
+            <partyEntities.party.contact.ContactMechPurpose contactMechPurposeId="PhoneBilling" contactMechTypeEnumId="EMAIL_ADDRESS" description="Phone - Billing"/>
+            <partyEntities.party.contact.ContactMechPurpose contactMechPurposeId="EmailPrimary" contactMechTypeEnumId="EMAIL_ADDRESS" description="Email - Primary"/>
+            <partyEntities.party.contact.ContactMechPurpose contactMechPurposeId="EmailBilling" contactMechTypeEnumId="EMAIL_ADDRESS" description="Email - Billing"/>
+        </seed-data>
+    </entity>
+
+    <entity entity-name="PartyContactMech" package="partyEntities.party.contact">
+        <field name="partyId" type="id" is-pk="true"/>
+        <field name="contactMechId" type="id" is-pk="true"/>
+        <field name="contactMechPurposeId" type="id" is-pk="true"/>
+        <field name="fromDate" type="date" is-pk="true"/>
+        <field name="thruDate" type="date"/>
+        <relationship type="one" related="partyEntities.party.Party"/>
+        <relationship type="one" related="partyEntities.party.contact.ContactMech"/>
+        <relationship type="one" related="ContactMechPurpose"/>
+        <relationship type="one-nofk" related="partyEntities.party.contact.TelecomNumber" short-alias="postalAddress"/>
+        <relationship type="one-nofk" related="partyEntities.party.contact.PostalAddress" short-alias="telecomNumber"/>
+    </entity>
+</entities>
