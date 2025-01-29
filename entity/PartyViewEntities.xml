@@ -1,0 +1,46 @@
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-3.xsd">
+    
+    <view-entity entity-name="FindCustomerView" package="partyEntities.party">
+        <member-entity entity-alias="party" entity-name="partyEntities.party.Party"/>
+        <member-entity entity-alias="pRole" entity-name="partyEntities.party.PartyRole" join-from-alias="party">
+            <key-map field-name="partyId"/>
+            <entity-condition>
+                <econdition field-name="roleTypeId" value="CUSTOMER"/>
+            </entity-condition>
+        </member-entity>
+        <member-entity entity-alias="per" entity-name="partyEntities.party.Person" join-from-alias="party">
+            <key-map field-name="partyId"/>
+        </member-entity>
+        <member-entity entity-alias="pcm" entity-name="partyEntities.party.contact.PartyContactMech" join-from-alias="per">
+            <key-map field-name="partyId"/>
+        </member-entity>
+        <member-entity entity-alias="cm" entity-name="partyEntities.party.contact.ContactMech" join-from-alias="pcm">
+            <key-map field-name="contactMechId"/>
+        </member-entity>
+        <member-entity entity-alias="tn" entity-name="partyEntities.party.contact.TelecomNumber" join-from-alias="cm" join-optional="true">
+            <key-map field-name="contactMechId"/>
+        </member-entity>
+        <member-entity entity-alias="pa" entity-name="partyEntities.party.contact.PostalAddress" join-from-alias="cm" join-optional="true">
+            <key-map field-name="contactMechId"/>
+        </member-entity>
+        
+        <alias entity-alias="per" field="partyId" name="partyId"/>
+        <alias entity-alias="per" name="firstName" field="firstName"/>
+        <alias entity-alias="per" name="lastName" field="lastName"/>
+
+        <alias name="partyRole" entity-alias="pRole" field="roleTypeId"/>
+        
+        <alias entity-alias="pcm" name="contactMechPurposeId" field="contactMechPurposeId"/>
+
+        <alias entity-alias="cm" name="emailAddress" field="infoString"/>
+        
+        <alias entity-alias="tn" name="contactNumber" field="contactNumber"/>
+        
+        <alias entity-alias="pa" name="city" field="city"/>
+        <alias name="address1" field="address1" entity-alias="pa"/>
+        <alias name="address2" field="address2" entity-alias="pa"/>
+        <alias name="postalCode" entity-alias="pa" field="postalCode"/>
+    </view-entity>
+    
+</entities>
