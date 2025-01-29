@@ -14,6 +14,11 @@
         </member-entity>
         <member-entity entity-alias="pcm" entity-name="partyEntities.party.contact.PartyContactMech" join-from-alias="per">
             <key-map field-name="partyId"/>
+            <entity-condition>
+                <econditions>
+                    <date-filter/>
+                </econditions>
+            </entity-condition>
         </member-entity>
         <member-entity entity-alias="cm" entity-name="partyEntities.party.contact.ContactMech" join-from-alias="pcm">
             <key-map field-name="contactMechId"/>
@@ -32,6 +37,8 @@
         <alias name="partyRole" entity-alias="pRole" field="roleTypeId"/>
         
         <alias entity-alias="pcm" name="contactMechPurposeId" field="contactMechPurposeId"/>
+        <alias name="fromDate" entity-alias="pcm" field="fromDate"/>
+        <alias name="thruDate" entity-alias="pcm" field="thruDate"/>
 
         <alias entity-alias="cm" name="emailAddress" field="infoString"/>
         

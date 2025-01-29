@@ -41,7 +41,7 @@ if(emailAddress){
 // org.moqui.entity.EntityConditionFactory.makeCondition(org.moqui.entity.EntityCondition, org.moqui.entity.EntityCondition.JoinOperator, org.moqui.entity.EntityCondition)
 ef.orderBy(firstName + " " + lastName);
 
-EntityList entityList = ef.list();
+EntityList entityList = ef.list().filterByDate("fromDate", "thruDate", null);
 
 ef.selectField("partyId");
 
