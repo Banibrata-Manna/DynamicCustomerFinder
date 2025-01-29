@@ -100,10 +100,10 @@
             <key-map field-name="contactMechTypeEnumId"/>
         </relationship>
         <seed-data>
-            <partyEntities.party.contact.ContactMechPurpose contactMechPurposeId="PostalPrimary" contactMechTypeEnumId="EMAIL_ADDRESS" description="Postal - Primary"/>
-            <partyEntities.party.contact.ContactMechPurpose contactMechPurposeId="PostalBilling" contactMechTypeEnumId="EMAIL_ADDRESS" description="Postal - Billing"/>
-            <partyEntities.party.contact.ContactMechPurpose contactMechPurposeId="PhonePrimary" contactMechTypeEnumId="EMAIL_ADDRESS" description="Phone - Primary"/>
-            <partyEntities.party.contact.ContactMechPurpose contactMechPurposeId="PhoneBilling" contactMechTypeEnumId="EMAIL_ADDRESS" description="Phone - Billing"/>
+            <partyEntities.party.contact.ContactMechPurpose contactMechPurposeId="PostalPrimary" contactMechTypeEnumId="POSTAL_ADDRESS" description="Postal - Primary"/>
+            <partyEntities.party.contact.ContactMechPurpose contactMechPurposeId="PostalBilling" contactMechTypeEnumId="POSTAL_ADDRESS" description="Postal - Billing"/>
+            <partyEntities.party.contact.ContactMechPurpose contactMechPurposeId="PhonePrimary" contactMechTypeEnumId="TELECOM_NUMBER" description="Phone - Primary"/>
+            <partyEntities.party.contact.ContactMechPurpose contactMechPurposeId="PhoneBilling" contactMechTypeEnumId="TELECOM_NUMBER" description="Phone - Billing"/>
             <partyEntities.party.contact.ContactMechPurpose contactMechPurposeId="EmailPrimary" contactMechTypeEnumId="EMAIL_ADDRESS" description="Email - Primary"/>
             <partyEntities.party.contact.ContactMechPurpose contactMechPurposeId="EmailBilling" contactMechTypeEnumId="EMAIL_ADDRESS" description="Email - Billing"/>
         </seed-data>

@@ -1,0 +1,4 @@
+partyEntities.party.contact.TelecomNumber,demo
+contactMechId,countryCode,areaCode,contactNumber,askForName
+10000,91,45341,7223856387,John Doe
+10005,91,7321,7879418006,Santanu Manna

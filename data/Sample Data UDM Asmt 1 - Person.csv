@@ -1,0 +1,14 @@
+partyEntities.party.Person,demo
+partyId,firstName,lastName,birthDate,gender
+PER123,John,Doe,1990-01-01,M
+PER256,Banibrata,Manna,2001-02-20,M
+PER125,Hrithik,Roshan,1980-01-10,M
+PER257,Santanu,Manna,1968-01-16,M
+PER126,Tulu ,Manna,1974-05-06,F
+PER250,Abhishek,Bhaware,2002-11-20,M
+PER128,John,Howard,1990-01-01,M
+PER253,Mansi,Manna,2001-02-20,F
+PER129,Ramesh,Roshan,1980-01-10,M
+PER2572,Bidyut,Manna,1968-01-16,M
+PER115,Bharati,Manna,1974-05-06,F
+PER245,Abhishek,Raghu,2002-11-20,M

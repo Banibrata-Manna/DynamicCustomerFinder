@@ -1,0 +1,16 @@
+partyEntities.party.contact.PartyContactMech,demo
+partyId,contactMechId,contactMechPurposeId,fromDate,thruDate
+PER123,10000,PhonePrimary,2020-03-20,
+ORG456,10006,EmailBilling,2020-03-20,
+PER256,10002,PostalBilling,2020-04-10,
+PER125,10003,PostalPrimary,2019-10-16,
+ORG457,10004,PostalPrimary,2021-02-10,
+PER257,10005,PhonePrimary,2020-03-20,
+PER126,10006,EmailPrimary,2020-03-20,
+ORG458,10007,EmailPrimary,2020-03-24,
+PER250,10009,EmailPrimary,2020-09-28,
+PER126,10008,EmailPrimary,2020-08-15,2023-08-26
+PER128,100064,EmailPrimary,2020-04-10,
+PER253,100074,EmailPrimary,2019-10-16,
+PER115,100084,EmailPrimary,2021-02-10,
+PER245,100094,EmailPrimary,2020-03-20,
