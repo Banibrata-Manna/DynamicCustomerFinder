@@ -2,7 +2,7 @@ import org.moqui.context.ExecutionContext;
 import org.moqui.entity.EntityCondition;
 import org.moqui.entity.EntityFind;
 import org.moqui.entity.EntityList;
-import org.moqui.entity.EntityValue;
+import org.moqui.entity.EntityValue
 
 ExecutionContext ec = context.ec;
 
@@ -30,10 +30,15 @@ if(postalCode){
     ef.condition(ec.entity.conditionFactory.makeCondition("postalCode", EntityCondition.LIKE, (leadingWildCard ? "%" : "") + postalCode + "%").ignoreCase());
 }
 if(emailAddress){
-    ef.condition(ec.entity.conditionFactory.makeCondition("contactMechPurposeId", EntityCondition.LIKE, "EmailPrimary"), EntityCondition.JoinOperator.AND,
-            ef.condition(ec.entity.conditionFactory.makeCondition("infoString", EntityCondition.LIKE, (leadingWildCard ? "%" : "") + emailAddress + "%")));
-}
+    EntityCondition lhs = ec.entity.conditionFactory.makeCondition("contactMechPurposeId",
+            EntityCondition.LIKE, "EmailPrimary");
+    EntityCondition rhs = ec.entity.conditionFactory.makeCondition("emailAddress",
+            EntityCondition.LIKE,
+            (leadingWildCard ? "%" : "") + emailAddress + "%").ignoreCase();
 
+    ef.condition(ec.entity.conditionFactory.makeCondition(lhs, EntityCondition.AND, rhs));
+}
+// org.moqui.entity.EntityConditionFactory.makeCondition(org.moqui.entity.EntityCondition, org.moqui.entity.EntityCondition.JoinOperator, org.moqui.entity.EntityCondition)
 ef.orderBy(firstName + " " + lastName);
 
 EntityList entityList = ef.list();
