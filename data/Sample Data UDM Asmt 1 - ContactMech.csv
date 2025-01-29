@@ -6,11 +6,11 @@ contactMechId,contactMechTypeEnumId,infoString
 10003,POSTAL_ADDRESS,
 10004,POSTAL_ADDRESS,
 10005,TELECOM_NUMBER,
-10006,EMAIL_ADDRESS,example@email.com
+10006,EMAIL_ADDRESS,example123@email.com
 10007,EMAIL_ADDRESS,mbanibrata@gmail.com
 10008,EMAIL_ADDRESS,mannabanibrata@gmail.com
 10009,EMAIL_ADDRESS,sntluban@gmail.com
-100064,EMAIL_ADDRESS,example123@email.com
+100064,EMAIL_ADDRESS,example12345@email.com
 100074,EMAIL_ADDRESS,malangbanibrata@gmail.com
 100084,EMAIL_ADDRESS,mannasantbanibrata@gmail.com
 100094,EMAIL_ADDRESS,sntlubanbid@gmail.com
