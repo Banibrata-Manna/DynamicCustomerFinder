@@ -8,8 +8,8 @@ ExecutionContext ec = context.ec;
 
 //ec.service.sync().name("create#Example").parameters(fields).call()
 
-    Map<Object, Object> customer = ec.service.sync().name("PartyServices.find#FindCustomerView").parameters(context).call();
-
+Map<Object, Object> customer = ec.service.sync().name("PartyServices.find#FindCustomerView").parameters(context).call();
+if(!customer.partyIdList) {
     EntityValue createdParty = ec.entity.makeValue("Party").set("partyTypeEnumId", "PERSON").setSequencedIdPrimary().create();
 
     Map<String, Object> fields = new HashMap<String, Object>();
@@ -45,3 +45,4 @@ ExecutionContext ec = context.ec;
     fields.put("fromDate", Date.valueOf(LocalDate.now()));
 
     ec.entity.makeValue("PartyContactMech").setAll(fields).create();
+}
