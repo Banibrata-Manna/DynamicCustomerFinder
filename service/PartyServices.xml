@@ -17,4 +17,18 @@
             <parameter name="partyIdList"/>
         </out-parameters>
     </service>
+
+    <service verb="create" noun="Customer" displayName="Create Customer"
+             location="component://DynamicCustomerFinder/service/CreateCustomer.groovy" type="script">
+        <in-parameters>
+            <parameter name="firstName"/>
+            <parameter name="lastName"/>
+            <parameter name="emailAddress"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="createdParty"/>
+            <parameter name="createdContactMech"/>
+            <parameter name="message"/>
+        </out-parameters>
+    </service>
 </services>
