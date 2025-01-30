@@ -30,7 +30,6 @@ if(!customer.partyIdList) {
     fields.remove("roleTypeId");
     fields.remove("partyId");
 
-
     fields.put("contactMechTypeEnumId", "EMAIL_ADDRESS");
     fields.put("infoString", emailAddress);
 
@@ -45,4 +44,5 @@ if(!customer.partyIdList) {
     fields.put("fromDate", Date.valueOf(LocalDate.now()));
 
     ec.entity.makeValue("PartyContactMech").setAll(fields).create();
+    context.createdParty = createdParty.getMap();
 }
