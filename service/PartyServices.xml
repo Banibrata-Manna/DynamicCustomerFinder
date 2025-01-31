@@ -32,10 +32,10 @@
         </out-parameters>
     </service>
 
-    <service verb="update" noun="Customer" displayName="Update Customer" type="script"
+    <service verb="update" noun="PartyContactMech" displayName="Update Customer" type="script"
         location="component://DynamicCustomerFinder/service/UpdateCustomer.groovy">
          <in-parameters>
-             <parameter name="infoString" entity-name="ContactMech" required="true"/>
+             <parameter name="emailAddress" required="true"/>
              <auto-parameters entity-name="PostalAddress" include="nonpk">
                  <exclude field-name="lastUpdatedStamp"/>
              </auto-parameters>
